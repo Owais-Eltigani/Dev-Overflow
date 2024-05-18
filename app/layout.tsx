@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter, Space_Grotesk } from 'next/font/google';
-import './globals.css';
 import React from 'react';
 import { ClerkProvider } from '@clerk/nextjs';
-import { auth, currentUser } from '@clerk/nextjs/server';
+// import { auth, currentUser } from '@clerk/nextjs/server';
 import { ThemeProvider } from '@/context/themeProvider';
+import './globals.css';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,31 +20,33 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: 'Dev Overflow',
-  description: '',
+  description:
+    'A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.',
   icons: {
-    icon: '/assets/images/site-logo.svg',
+    icon: '',
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  // const { userId } = auth();  //? for authentication
+}) {
+  // const { userId } = auth(); // ? for authentication
 
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
-          <ThemeProvider>
-            <h1 className="p-4 text-2xl">
-              {/* {userId ? 'welcome' : ' u r not logged'} */}
-            </h1>
-            {children}
-          </ThemeProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.className} ${spaceGrotesk.className}`}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: 'primary-gradient',
+              footerActionLink: 'primary-text-gradient hover:text-primary-500',
+            },
+          }}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
