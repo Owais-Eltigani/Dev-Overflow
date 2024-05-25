@@ -2,9 +2,9 @@ import { SignedIn, UserButton } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import Theme from './theme';
-import MobileNav from './mobileNavBar';
-import GlobalSearch from '../Search/globalSearch';
+import Theme from '@/components/Shared/NavBar/theme';
+import MobileNav from '@/components/Shared/NavBar/mobileNavBar';
+import GlobalSearch from '@/components/Shared/Search/globalSearch';
 
 const Navbar = () => {
   return (

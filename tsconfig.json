@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/page.tsxx"
+    "app/page.tsx",
+    "components/Shared/rightSideBar"
   ],
   "exclude": ["node_modules"]
 }

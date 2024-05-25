@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import { Theme } from '@/types/type';
+import { Theme } from '@/types/index';
 
 const ThemeContext = createContext<Theme | undefined>(undefined);
 
