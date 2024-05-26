@@ -29,7 +29,7 @@ export const ThemeProvider = ({
   }, [theme]);
 
   return (
-    // ts-ignore
+    // @ts-ignore
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>

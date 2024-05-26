@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { getUserInfo } from '@/lib/actions/user.action';
-import { URLProps } from '@/types';
+import { URLProps } from '@/types/index';
 import { SignedIn, auth } from '@clerk/nextjs';
 import Image from 'next/image';
 import Link from 'next/link';

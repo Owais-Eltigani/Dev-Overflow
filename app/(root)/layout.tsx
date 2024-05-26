@@ -1,6 +1,6 @@
 import LeftSidebar from '@/components/Shared/LiftSideBar';
 import RightSidebar from '@/components/Shared/rightSideBar';
-import Navbar from '@/components/Shared/NavBar/Navbar';
+import Navbar from '@/components/Shared/NavBar/navbar';
 import React from 'react';
 import { Toaster } from '@/components/ui/toaster';
 
