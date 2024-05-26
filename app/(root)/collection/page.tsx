@@ -1,9 +1,9 @@
-import QuestionCard from '@/components/cards/QuestionCard';
-import Filter from '@/components/shared/Filter';
-import NoResult from '@/components/shared/NoResult';
-import Pagination from '@/components/shared/Pagination';
-import LocalSearchbar from '@/components/shared/search/LocalSearchbar';
-import { QuestionFilters } from '@/constants/filters';
+import QuestionCard from '@/components/Shared/cards/QuestionCard';
+import Filter from '@/components/Shared/Filter';
+import NoResult from '@/components/Shared/NoResult';
+import Pagination from '@/components/Shared/Pagination';
+import LocalSearchbar from '@/components/Shared/Search/LocalSearch';
+import { QuestionFilters } from '@/constants/index';
 import { getSavedQuestions } from '@/lib/actions/user.action';
 import { SearchParamsProps } from '@/types';
 import { auth } from '@clerk/nextjs';
