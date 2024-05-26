@@ -5,7 +5,7 @@ import { getAnswers } from '@/lib/actions/answer.action';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTimestamp } from '@/lib/utils';
-import ParseHTML from '@/components/Shared/ParserHtml';
+import ParseHTML from '@/components/Shared/ParserHTML';
 import Votes from '@/components/Shared/Votes';
 import Pagination from './Pagination';
 

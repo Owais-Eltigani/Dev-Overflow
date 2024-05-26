@@ -1,7 +1,7 @@
 import Answer from '@/components/Shared/form/Answer';
 import AllAnswers from '@/components/Shared/AllAnswers';
 import Metric from '@/components/Shared/Metric';
-import ParseHTML from '@/components/Shared/ParserHtml';
+import ParseHTML from '@/components/Shared/ParserHTML';
 import RenderTag from '@/components/Shared/RenderTag';
 import Votes from '@/components/Shared/Votes';
 import { getQuestionById } from '@/lib/actions/question.action';
