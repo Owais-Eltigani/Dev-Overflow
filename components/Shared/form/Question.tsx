@@ -30,7 +30,7 @@ interface Props {
 }
 
 const Question = ({ type, mongoUserId, questionDetails }: Props) => {
-  const { mode } = useTheme();
+  const { theme } = useTheme();
   const editorRef = useRef(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -188,8 +188,8 @@ const Question = ({ type, mongoUserId, questionDetails }: Props) => {
                       'codesample | bold italic forecolor | alignleft aligncenter |' +
                       'alignright alignjustify | bullist numlist',
                     content_style: 'body { font-family:Inter; font-size:16px }',
-                    skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
-                    content_css: mode === 'dark' ? 'dark' : 'light',
+                    skin: theme === 'dark' ? 'oxide-dark' : 'oxide',
+                    content_css: theme === 'dark' ? 'dark' : 'light',
                   }}
                 />
               </FormControl>
