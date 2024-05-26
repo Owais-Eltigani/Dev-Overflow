@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
-import RenderTag from '@/components/Shared/renderTag';
+import RenderTag from '@/components/Shared/RenderTag';
 import Metric from '@/components/Shared/Metric';
 import { formatAndDivideNumber, getTimestamp } from '@/lib/utils';
 import { SignedIn } from '@clerk/nextjs';
-import EditDeleteAction from '../shared/EditDeleteAction';
+import EditDeleteAction from '@/components/Shared/EditDeleteAction';
 import { QuestionProps } from '@/types/index';
 
 const QuestionCard = ({

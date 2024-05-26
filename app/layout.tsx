@@ -6,7 +6,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 // import { auth, currentUser } from '@clerk/nextjs/server';
 import { ThemeProvider } from '@/context/themeProvider';
 import './globals.css';
-import './prism.css';
+import '@/styles/prism.css';
 
 const inter = Inter({
   subsets: ['latin'],
