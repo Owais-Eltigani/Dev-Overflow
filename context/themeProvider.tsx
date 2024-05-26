@@ -8,7 +8,7 @@ const ThemeContext = createContext<Theme | undefined>(undefined);
 export const ThemeProvider = ({
   children,
 }: Readonly<{ children: React.ReactNode }>) => {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('');
 
   const changeTheme = () => {
     if (
@@ -29,7 +29,7 @@ export const ThemeProvider = ({
   }, [theme]);
 
   return (
-    // ts-ignore
+    // @ts-ignore
     <ThemeContext.Provider value={{ theme, setTheme }}>
       {children}
     </ThemeContext.Provider>
