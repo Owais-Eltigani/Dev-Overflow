@@ -1,6 +1,6 @@
 import Filter from '@/components/Shared/Filter';
 import NoResult from '@/components/Shared/NoResult';
-import Pagination from '@/components/shared/Pagination';
+import Pagination from '@/components/Shared/Pagination';
 import LocalSearchbar from '@/components/Shared/Search/LocalSearch';
 import { TagFilters } from '@/constants/index';
 import { getAllTags } from '@/lib/actions/tag.action';
