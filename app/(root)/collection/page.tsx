@@ -5,7 +5,7 @@ import Pagination from '@/components/Shared/Pagination';
 import LocalSearchbar from '@/components/Shared/Search/LocalSearch';
 import { QuestionFilters } from '@/constants/index';
 import { getSavedQuestions } from '@/lib/actions/user.action';
-import { SearchParamsProps } from '@/types';
+import { SearchParamsProps } from '@/types/index';
 import { auth } from '@clerk/nextjs';
 
 export default async function Home({ searchParams }: SearchParamsProps) {

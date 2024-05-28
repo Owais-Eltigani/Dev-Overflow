@@ -4,7 +4,7 @@ import Pagination from '@/components/Shared/Pagination';
 import LocalSearchbar from '@/components/Shared/Search/LocalSearch';
 import { UserFilters } from '@/constants/index';
 import { getAllUsers } from '@/lib/actions/user.action';
-import { SearchParamsProps } from '@/types';
+import { SearchParamsProps } from '@/types/index';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 

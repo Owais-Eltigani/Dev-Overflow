@@ -1,7 +1,7 @@
 import Question from '@/components/Shared/form/Question';
 import { getQuestionById } from '@/lib/actions/question.action';
 import { getUserById } from '@/lib/actions/user.action';
-import { ParamsProps } from '@/types';
+import { ParamsProps } from '@/types/index';
 import { auth } from '@clerk/nextjs';
 
 const Page = async ({ params }: ParamsProps) => {
