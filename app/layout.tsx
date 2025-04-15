@@ -5,7 +5,7 @@ import React from 'react';
 import { ClerkProvider } from '@clerk/nextjs';
 // import { auth, currentUser } from '@clerk/nextjs/server';
 import { ThemeProvider } from '@/context/themeProvider';
-import './globals.css';
+import './globals.css'; // ? you need to import the css file in the root layout to apply the styles globally and font to work.
 import '@/styles/prism.css';
 
 const inter = Inter({
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   description:
     'A community-driven platform for asking and answering programming questions. Get help, share knowledge, and collaborate with developers from around the world. Explore topics in web development, mobile app development, algorithms, data structures, and more.',
   icons: {
-    icon: '',
+    icon: '/assets/images/site-logo.svg',
   },
 };
 
@@ -37,18 +37,19 @@ export default function RootLayout({
   // const { userId } = auth(); // ? for authentication
 
   return (
-    <html lang="en">
-      <body className={`${inter.className} ${spaceGrotesk.className}`}>
-        <ClerkProvider
-          appearance={{
-            elements: {
-              formButtonPrimary: 'primary-gradient',
-              footerActionLink: 'primary-text-gradient hover:text-primary-500',
-            },
-          }}>
+    <ClerkProvider
+      appearance={{
+        elements: {
+          formButtonPrimary: 'primary-gradient',
+          footerActionLink: 'primary-text-gradient hover:text-primary-500',
+        },
+      }}>
+      <html lang="en">
+        {/* if font didn't work change to {inter.variable}  */}
+        <body className={`${inter.className} ${spaceGrotesk.className}`}>
           <ThemeProvider>{children}</ThemeProvider>
-        </ClerkProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

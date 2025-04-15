@@ -27,6 +27,7 @@ const Navbar = () => {
       <div className="flex-between gap-5">
         <Theme />
 
+        {/* only show the user button when logged in */}
         <SignedIn>
           <UserButton
             afterSignOutUrl="/"

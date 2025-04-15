@@ -55,6 +55,7 @@ const NavContent = () => {
 const MobileNav = () => {
   return (
     <Sheet>
+      {/* With asChild - Image becomes the trigger element */}
       <SheetTrigger asChild>
         <Image
           src="/assets/icons/hamburger.svg"
