@@ -8,6 +8,7 @@ import { SearchParamsProps } from '@/types/index';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
+// you can add custom properties to each page
 export const metadata: Metadata = {
   title: 'Community | Dev Overflow',
 };
