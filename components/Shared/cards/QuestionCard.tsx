@@ -19,6 +19,9 @@ const QuestionCard = ({
   createdAt,
 }: QuestionProps) => {
   const showActionButtons = clerkId && clerkId === author.clerkId;
+  console.log({ answers, upvotes, views, createdAt, author, tags });
+
+  answers = answers || [];
 
   return (
     <div className="card-wrapper rounded-[10px] p-9 sm:px-11">
@@ -61,14 +64,14 @@ const QuestionCard = ({
           <Metric
             imgUrl="/assets/icons/like.svg"
             alt="Upvotes"
-            value={formatAndDivideNumber(upvotes.length)}
+            value={formatAndDivideNumber(upvotes?.length)}
             title=" Votes"
             textStyles="small-medium text-dark400_light800"
           />
           <Metric
             imgUrl="/assets/icons/message.svg"
             alt="message"
-            value={formatAndDivideNumber(answers.length)}
+            value={formatAndDivideNumber(answers?.length)}
             title=" Answers"
             textStyles="small-medium text-dark400_light800"
           />

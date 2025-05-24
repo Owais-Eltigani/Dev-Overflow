@@ -70,7 +70,7 @@ const Page = async ({ params, searchParams }: any) => {
         <Metric
           imgUrl="/assets/icons/message.svg"
           alt="message"
-          value={formatAndDivideNumber(result.answers.length)}
+          value={formatAndDivideNumber(result.answers?.length)}
           title=" Answers"
           textStyles="small-medium text-dark400_light800"
         />
@@ -99,7 +99,7 @@ const Page = async ({ params, searchParams }: any) => {
       <AllAnswers
         questionId={result._id}
         userId={mongoUser._id}
-        totalAnswers={result.answers.length}
+        totalAnswers={result.answers?.length}
         page={searchParams?.page}
         filter={searchParams?.filter}
       />

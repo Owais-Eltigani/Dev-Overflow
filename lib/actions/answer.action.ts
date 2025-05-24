@@ -23,8 +23,10 @@ export async function createAnswer(params: CreateAnswerParams) {
 
     // Add the answer to the question's answers array
     const questionObject = await Question.findByIdAndUpdate(question, {
-      $push: { answers: newAnswer._id },
+      $addToSet: { answers: newAnswer._id },
     });
+
+    console.log({ questionObject }, { newAnswer });
 
     await Interaction.create({
       user: author,
