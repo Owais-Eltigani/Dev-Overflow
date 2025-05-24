@@ -79,3 +79,159 @@ return context;
 }
 
   <!--  -->
+
+  <!-- query string and debounce for search   -->
+
+useEffect(() => {
+const delayDebounceFn = setTimeout(() => {
+if (search) {
+const newUrl = formUrlQuery({
+params: searchParams.toString(),
+key: 'q',
+value: search,
+});
+
+        router.push(newUrl, { scroll: false });
+      } else {
+        console.log(route, pathname);
+        if (pathname === route) {
+          const newUrl = removeKeysFromQuery({
+            params: searchParams.toString(),
+            keysToRemove: ['q'],
+          });
+
+          router.push(newUrl, { scroll: false });
+        }
+      }
+    }, 300);
+
+}
+
+<!--  -->
+
+<!-- filters -->
+
+const searchParams = useSearchParams();
+const router = useRouter();
+
+const [active, setActive] = useState('');
+
+const handleTypeClick = (item: string) => {
+if (active === item) {
+setActive('');
+
+      const newUrl = formUrlQuery({
+        params: searchParams.toString(),
+        key: 'filter',
+        value: null,
+      });
+
+      router.push(newUrl, { scroll: false });
+    } else {
+      setActive(item);
+
+      const newUrl = formUrlQuery({
+        params: searchParams.toString(),
+        key: 'filter',
+        value: item.toLowerCase(),
+      });
+
+      router.push(newUrl, { scroll: false });
+    }
+
+    <!--  -->
+
+<!-- pagination -->
+
+// Calculcate the number of posts to skip based on the page number and page size
+const skipAmount = (page - 1) \* pageSize;
+
+    // Create the query object based on the search parameters
+
+const questions = await Question.find(query)
+.populate({ path: 'tags', model: Tag })
+.populate({ path: 'author', model: User })
+.skip(skipAmount)
+.limit(pageSize)
+.sort(sortOptions);
+
+       const totalQuestions = await Question.countDocuments(query);
+
+    const isNext = totalQuestions > skipAmount + questions.length;
+
+    return { questions, isNext };
+
+    <!--  -->
+
+<!-- global search  -->
+
+await connectToDatabase();
+
+    const { query, type } = params;
+    const regexQuery = { $regex: query, $options: 'i' };
+
+    let results = [];
+
+    const modelsAndTypes = [
+      { model: Question, searchField: 'title', type: 'question' },
+      { model: User, searchField: 'name', type: 'user' },
+      { model: Answer, searchField: 'content', type: 'answer' },
+      { model: Tag, searchField: 'name', type: 'tag' },
+    ];
+
+    const typeLower = type?.toLowerCase();
+
+    if (!typeLower || !SearchableTypes.includes(typeLower)) {
+      // SEARCH ACROSS EVERYTHING
+
+      // ? you cannot use async with .map or foreach just use simple for ... of
+      for (const { model, searchField, type } of modelsAndTypes) {
+        const queryResults = await model
+          .find({ [searchField]: regexQuery })
+          .limit(2);
+
+        results.push(
+          ...queryResults.map(item => ({
+            title:
+              type === 'answer'
+                ? `Answers containing ${query}`
+                : item[searchField],
+            type,
+            id:
+              type === 'user'
+                ? item.clerkid
+                : type === 'answer'
+                ? item.question
+                : item._id,
+          }))
+        );
+      }
+    } else {
+      // SEARCH IN THE SPECIFIED MODEL TYPE
+      const modelInfo = modelsAndTypes.find(item => item.type === type);
+
+      console.log({ modelInfo, type });
+      if (!modelInfo) {
+        throw new Error('Invalid search type');
+      }
+
+      const queryResults = await modelInfo.model
+        .find({ [modelInfo.searchField]: regexQuery })
+        .limit(8);
+
+      results = queryResults.map(item => ({
+        title:
+          type === 'answer'
+            ? `Answers containing ${query}`
+            : item[modelInfo.searchField],
+        type,
+        id:
+          type === 'user'
+            ? item.clerkId
+            : type === 'answer'
+            ? item.question
+            : item._id,
+      }));
+    }
+
+<!--  -->

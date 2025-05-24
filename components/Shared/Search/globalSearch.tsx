@@ -18,6 +18,7 @@ const GlobalSearch = () => {
   const [search, setSearch] = useState(query || '');
   const [isOpen, setIsOpen] = useState(false);
 
+  // if you click outside the search component
   useEffect(() => {
     const handleOutsideClick = (event: any) => {
       if (

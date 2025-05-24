@@ -30,6 +30,7 @@ export async function globalSearch(params: SearchParams) {
     if (!typeLower || !SearchableTypes.includes(typeLower)) {
       // SEARCH ACROSS EVERYTHING
 
+      // ? you cannot use async with .map or foreach just use simple for ... of
       for (const { model, searchField, type } of modelsAndTypes) {
         const queryResults = await model
           .find({ [searchField]: regexQuery })
